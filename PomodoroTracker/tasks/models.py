@@ -20,9 +20,9 @@ class Task(models.Model):
             * Pomodoro -- a many to many relationship
     """
     body = models.CharField(max_length=500)
-    project = models.ForeignKey('Project', blank=True)
-    day = models.ForeignKey('pomodoros.Day', blank=True)
-    due_date = models.DateField(blank=True)
+    project = models.ForeignKey('Project', blank=True, null=True)
+    day = models.ForeignKey('pomodoros.Day', blank=True, null=True)
+    due_date = models.DateField(blank=True, null=True)
 
     LOW= 1
     MEDIUM = 2

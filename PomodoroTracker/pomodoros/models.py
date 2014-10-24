@@ -10,7 +10,7 @@ class Pomodoro(models.Model):
             * day (required) -- the day when this pomodoro will be completed.
             * completed (default=False) -- whether the pomodoro has been completed
     """
-    tasks = models.ManyToManyField('tasks.Task', blank=True)
+    tasks = models.ManyToManyField('tasks.Task', blank=True, null=True, related_name="pomodoros")
     day = models.ForeignKey('Day')
     completed = models.BooleanField(default=False)
 
@@ -38,8 +38,8 @@ class Distraction(models.Model):
     TASK = 1
     IGNORE = 2
     STATUS_OPTIONS = (
-        (NOT_HANDLED, 'To be dealt with.')
+        (NOT_HANDLED, 'To be dealt with.'),
         (TASK, 'Became a task.'),
-        (INGORE, 'Ignored.'),
+        (IGNORE, 'Ignored.'),
     )
-    status = models.SmallPositiveIntegerField(choices=STATUS_OPTIONS, default=NOT_HANDLED)
+    status = models.PositiveSmallIntegerField(choices=STATUS_OPTIONS, default=NOT_HANDLED)
