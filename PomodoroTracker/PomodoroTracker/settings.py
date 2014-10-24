@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'pomodoros',
     'tasks',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
